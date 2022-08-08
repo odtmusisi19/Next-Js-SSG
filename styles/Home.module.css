@@ -2,8 +2,39 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  justify-items: center;
+}
+.h2 {
+  text-align: center;
+  background-color: aqua;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 5px;
 }
 
 .card img {
   max-height: 200px;
+  border: 1px solid aqua;
+  border-radius: 40px;
+  padding: 20px;
+  transform: perspective(1500px) rotateY(15deg);
+  transition: transform 1s ease 0s;
+}
+.card:hover {
+  transform: perspective(3000px) rotateY(-30deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+  }
+  .card img {
+    max-height: 200px;
+    border: 3px solid aqua;
+    border-radius: 40px;
+    padding: 20px;
+  }
 }

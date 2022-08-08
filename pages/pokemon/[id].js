@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import Head from "next/head";
-import Link from "next/link";
-import styles from "../../styles/Details.module.css";
+import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../../styles/Details.module.css';
 
 export async function getStaticPaths() {
-  const resp = await fetch(
-    "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
-  );
+  const resp = await fetch('https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json');
   const pokemon = await resp.json();
 
   return {
@@ -19,9 +17,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const resp = await fetch(
-    `https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`
-  );
+  const resp = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`);
 
   return {
     props: {
@@ -32,6 +28,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Details({ pokemon }) {
+  // console.log(pokemon);
   return (
     <div>
       <Head>
@@ -44,15 +41,11 @@ export default function Details({ pokemon }) {
       </div>
       <div className={styles.layout}>
         <div>
-          <img
-            className={styles.picture}
-            src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${pokemon.image}`}
-            alt={pokemon.name.english}
-          />
+          <img className={styles.picture} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${pokemon.image}`} alt={pokemon.name.english} />
         </div>
         <div>
           <div className={styles.name}>{pokemon.name}</div>
-          <div className={styles.type}>{pokemon.type.join(", ")}</div>
+          <div className={styles.type}>{pokemon.type.join(', ')}</div>
           <table>
             <thead className={styles.header}>
               <tr>
